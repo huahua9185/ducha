@@ -1,0 +1,113 @@
+.dashboard {
+  padding: 24px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  color: #262626;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dashboard-header p {
+  margin: 8px 0 0 0;
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+.dashboard .ant-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard .ant-card-head-title {
+  padding: 16px 0;
+  font-weight: 600;
+}
+
+.dashboard .ant-statistic-title {
+  font-size: 14px;
+  color: #8c8c8c;
+  font-weight: 500;
+}
+
+.dashboard .ant-statistic-content {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dashboard .ant-progress-circle {
+  margin: 0 auto;
+}
+
+.dashboard .ant-list-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard .ant-list-item:last-child {
+  border-bottom: none;
+}
+
+.dashboard .ant-list-item-meta-title {
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.dashboard .ant-list-item-meta-description {
+  font-size: 12px;
+  color: #8c8c8c;
+}
+
+.dashboard .ant-alert {
+  border-radius: 6px;
+}
+
+.dashboard .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+  }
+  
+  .dashboard-header h2 {
+    font-size: 20px;
+  }
+  
+  .dashboard .ant-statistic-content {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard {
+    padding: 12px;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 16px;
+  }
+  
+  .dashboard-header h2 {
+    font-size: 18px;
+  }
+  
+  .dashboard .ant-card {
+    margin-bottom: 16px;
+  }
+}

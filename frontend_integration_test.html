@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前后端集成测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #666;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .status.pass {
+            background: #28a745;
+            color: white;
+        }
+        .status.fail {
+            background: #dc3545;
+            color: white;
+        }
+        .stats {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>政府效能督查系统 - 前后端集成测试</h1>
+        
+        <div class="test-section">
+            <h3>🔧 连通性测试</h3>
+            <button onclick="testHealth()">健康检查</button>
+            <button onclick="testPing()">Ping测试</button>
+            <div id="connectivity-result" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🔐 认证测试</h3>
+            <button onclick="testLogin()">用户登录</button>
+            <button onclick="testCurrentUser()">获取当前用户</button>
+            <div id="auth-result" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📋 督办事项API测试</h3>
+            <button onclick="testSupervisionList()">获取督办列表</button>
+            <button onclick="testCreateSupervision()">创建督办事项</button>
+            <button onclick="testSupervisionDetail()">获取督办详情</button>
+            <div id="supervision-result" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>⚙️ 工作流API测试</h3>
+            <button onclick="testWorkflowTemplates()">工作流模板</button>
+            <button onclick="testMyTasks()">我的任务</button>
+            <div id="workflow-result" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📊 监控分析API测试</h3>
+            <button onclick="testMonitoringStats()">监控统计</button>
+            <button onclick="testAnalyticsOverview()">分析概览</button>
+            <div id="monitoring-result" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🚀 批量测试</h3>
+            <button onclick="runAllTests()">运行所有测试</button>
+            <button onclick="clearResults()">清空结果</button>
+        </div>
+        
+        <div class="stats" id="test-stats">
+            <p>点击上方按钮开始测试</p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000/api/v1';
+        let accessToken = null;
+        let testResults = [];
+
+        // 工具函数
+        function logResult(section, testName, success, message, data = null) {
+            const timestamp = new Date().toLocaleTimeString();
+            const status = success ? 'PASS' : 'FAIL';
+            const statusClass = success ? 'pass' : 'fail';
+            
+            let logMessage = `[${timestamp}] <span class="status ${statusClass}">${status}</span> ${testName}`;
+            if (message) logMessage += `: ${message}`;
+            if (data) logMessage += `\n数据: ${JSON.stringify(data, null, 2)}`;
+            
+            const resultDiv = document.getElementById(`${section}-result`);
+            resultDiv.innerHTML += logMessage + '\n\n';
+            resultDiv.className = `result ${success ? 'success' : 'error'}`;
+            
+            testResults.push({ section, testName, success, message, timestamp });
+            updateStats();
+        }
+
+        function updateStats() {
+            const total = testResults.length;
+            const passed = testResults.filter(r => r.success).length;
+            const failed = total - passed;
+            
+            const statsDiv = document.getElementById('test-stats');
+            statsDiv.innerHTML = `
+                <strong>测试统计:</strong> 
+                总计 ${total} | 
+                <span style="color: #28a745;">通过 ${passed}</span> | 
+                <span style="color: #dc3545;">失败 ${failed}</span> | 
+                成功率 ${total > 0 ? Math.round(passed/total*100) : 0}%
+            `;
+        }
+
+        function clearResults() {
+            const resultDivs = document.querySelectorAll('.result');
+            resultDivs.forEach(div => {
+                div.innerHTML = '';
+                div.className = 'result';
+            });
+            testResults = [];
+            updateStats();
+        }
+
+        // API测试函数
+        async function makeRequest(url, options = {}) {
+            try {
+                const headers = {
+                    'Content-Type': 'application/json',
+                    ...options.headers
+                };
+                
+                if (accessToken) {
+                    headers.Authorization = `Bearer ${accessToken}`;
+                }
+
+                const response = await fetch(url, {
+                    ...options,
+                    headers
+                });
+
+                const data = await response.json();
+                return { success: response.ok, status: response.status, data };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 连通性测试
+        async function testHealth() {
+            const result = await makeRequest('http://localhost:8000/health');
+            if (result.success) {
+                logResult('connectivity', '健康检查', true, '服务正常运行', result.data);
+            } else {
+                logResult('connectivity', '健康检查', false, `连接失败: ${result.error || result.status}`);
+            }
+        }
+
+        async function testPing() {
+            const result = await makeRequest(`${API_BASE_URL}/ping`);
+            if (result.success) {
+                logResult('connectivity', 'Ping测试', true, '连通性正常', result.data);
+            } else {
+                logResult('connectivity', 'Ping测试', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        // 认证测试
+        async function testLogin() {
+            const loginData = {
+                username: 'test_admin',
+                password: 'test123456'
+            };
+
+            const result = await makeRequest(`${API_BASE_URL}/auth/login`, {
+                method: 'POST',
+                body: JSON.stringify(loginData)
+            });
+
+            if (result.success && result.data.data && result.data.data.access_token) {
+                accessToken = result.data.data.access_token;
+                logResult('auth', '用户登录', true, '登录成功，已获取token', {
+                    user: result.data.data.user,
+                    token: accessToken.substring(0, 20) + '...'
+                });
+            } else {
+                logResult('auth', '用户登录', false, `登录失败: ${result.error || result.data?.message || result.status}`);
+            }
+        }
+
+        async function testCurrentUser() {
+            if (!accessToken) {
+                logResult('auth', '获取当前用户', false, '请先登录获取token');
+                return;
+            }
+
+            const result = await makeRequest(`${API_BASE_URL}/users/me`);
+            if (result.success) {
+                logResult('auth', '获取当前用户', true, '成功获取用户信息', result.data.data);
+            } else {
+                logResult('auth', '获取当前用户', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        // 督办事项测试
+        async function testSupervisionList() {
+            const result = await makeRequest(`${API_BASE_URL}/supervision?page=1&size=10`);
+            if (result.success) {
+                const total = result.data.data.total;
+                logResult('supervision', '获取督办列表', true, `成功获取 ${total} 个督办事项`, {
+                    total,
+                    items: result.data.data.items.length
+                });
+            } else {
+                logResult('supervision', '获取督办列表', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        async function testCreateSupervision() {
+            const newItem = {
+                title: '前端集成测试督办事项',
+                content: '这是通过前端页面创建的测试督办事项',
+                type: 'regular',
+                urgency: 'medium',
+                deadline: '2025-08-30T23:59:59',
+                source: '前端集成测试'
+            };
+
+            const result = await makeRequest(`${API_BASE_URL}/supervision`, {
+                method: 'POST',
+                body: JSON.stringify(newItem)
+            });
+
+            if (result.success) {
+                const itemId = result.data.data.id;
+                logResult('supervision', '创建督办事项', true, `成功创建事项，ID: ${itemId}`, result.data.data);
+            } else {
+                logResult('supervision', '创建督办事项', false, `创建失败: ${result.error || result.data?.message || result.status}`);
+            }
+        }
+
+        async function testSupervisionDetail() {
+            // 先获取一个督办事项ID
+            const listResult = await makeRequest(`${API_BASE_URL}/supervision?page=1&size=1`);
+            if (!listResult.success || !listResult.data.data.items.length) {
+                logResult('supervision', '获取督办详情', false, '没有可用的督办事项进行测试');
+                return;
+            }
+
+            const itemId = listResult.data.data.items[0].id;
+            const result = await makeRequest(`${API_BASE_URL}/supervision/${itemId}`);
+            
+            if (result.success) {
+                logResult('supervision', '获取督办详情', true, `成功获取事项详情，ID: ${itemId}`, result.data.data);
+            } else {
+                logResult('supervision', '获取督办详情', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        // 工作流测试
+        async function testWorkflowTemplates() {
+            const result = await makeRequest(`${API_BASE_URL}/workflow/templates?page=1&size=10`);
+            if (result.success) {
+                const total = result.data.data.total;
+                logResult('workflow', '工作流模板', true, `成功获取 ${total} 个模板`, {
+                    total,
+                    items: result.data.data.items.length
+                });
+            } else {
+                logResult('workflow', '工作流模板', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        async function testMyTasks() {
+            const result = await makeRequest(`${API_BASE_URL}/workflow/my-tasks?page=1&size=10`);
+            if (result.success) {
+                const total = result.data.data.total;
+                logResult('workflow', '我的任务', true, `成功获取 ${total} 个任务`, {
+                    total,
+                    items: result.data.data.items.length
+                });
+            } else {
+                logResult('workflow', '我的任务', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        // 监控分析测试
+        async function testMonitoringStats() {
+            const result = await makeRequest(`${API_BASE_URL}/monitoring/stats`);
+            if (result.success) {
+                logResult('monitoring', '监控统计', true, '成功获取监控统计数据', result.data.data);
+            } else {
+                logResult('monitoring', '监控统计', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        async function testAnalyticsOverview() {
+            const result = await makeRequest(`${API_BASE_URL}/analytics/overview?start_date=2025-01-01&end_date=2025-12-31`);
+            if (result.success) {
+                logResult('monitoring', '分析概览', true, '成功获取分析概览数据', result.data.data);
+            } else {
+                logResult('monitoring', '分析概览', false, `请求失败: ${result.error || result.status}`);
+            }
+        }
+
+        // 批量测试
+        async function runAllTests() {
+            clearResults();
+            
+            console.log('开始运行所有测试...');
+            
+            // 连通性测试
+            await testHealth();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testPing();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // 认证测试
+            await testLogin();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testCurrentUser();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // 督办事项测试
+            await testSupervisionList();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testCreateSupervision();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testSupervisionDetail();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // 工作流测试
+            await testWorkflowTemplates();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testMyTasks();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // 监控分析测试
+            await testMonitoringStats();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testAnalyticsOverview();
+            
+            console.log('所有测试完成！');
+        }
+
+        // 页面加载时自动检查服务器状态
+        window.onload = function() {
+            console.log('页面加载完成，自动检查服务器状态...');
+            testHealth();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+.supervision-detail {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: calc(100vh - 64px);
+}
+
+.detail-header {
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
+.detail-header .ant-card-body {
+  padding: 16px 24px;
+}
+
+.detail-tabs {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.detail-tabs .ant-tabs-content-holder {
+  padding: 24px;
+}
+
+.detail-tabs .ant-tabs-tab {
+  font-weight: 500;
+}
+
+.detail-tabs .ant-tabs-tab-active {
+  font-weight: 600;
+}
+
+.supervision-detail .ant-descriptions {
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.supervision-detail .ant-descriptions-item-label {
+  font-weight: 500;
+  color: #262626;
+  background: #f8f9fa;
+}
+
+.supervision-detail .ant-descriptions-item-content {
+  background: #fff;
+}
+
+.supervision-detail .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.supervision-detail .ant-progress-line {
+  margin: 0;
+}
+
+.supervision-detail .ant-timeline {
+  margin-top: 16px;
+}
+
+.supervision-detail .ant-timeline-item {
+  padding-bottom: 16px;
+}
+
+.supervision-detail .ant-timeline-item-content {
+  min-height: 48px;
+}
+
+.supervision-detail .ant-table-tbody > tr > td {
+  padding: 12px 16px;
+}
+
+.supervision-detail .ant-table-expanded-row > td {
+  background: #f8f9fa;
+}
+
+.supervision-detail .ant-modal-body {
+  padding-top: 24px;
+}
+
+.supervision-detail .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.supervision-detail .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.supervision-detail .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.supervision-detail .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+}
+
+/* 状态标签特殊样式 */
+.supervision-detail .ant-tag.ant-tag-success {
+  background: #f6ffed;
+  border-color: #b7eb8f;
+  color: #52c41a;
+}
+
+.supervision-detail .ant-tag.ant-tag-error {
+  background: #fff1f0;
+  border-color: #ffa39e;
+  color: #ff4d4f;
+}
+
+.supervision-detail .ant-tag.ant-tag-warning {
+  background: #fffbe6;
+  border-color: #ffe58f;
+  color: #faad14;
+}
+
+.supervision-detail .ant-tag.ant-tag-processing {
+  background: #e6f7ff;
+  border-color: #91d5ff;
+  color: #1890ff;
+}
+
+/* 徽章样式 */
+.supervision-detail .ant-badge {
+  font-size: 12px;
+}
+
+.supervision-detail .ant-badge-status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* 复制按钮样式 */
+.supervision-detail .ant-typography-copy {
+  color: #1890ff;
+  margin-left: 8px;
+}
+
+.supervision-detail .ant-typography-copy:hover {
+  color: #40a9ff;
+}
+
+/* 展开行样式 */
+.supervision-detail .ant-table-expanded-row-fixed {
+  margin: 0 -16px;
+}
+
+/* 进度条样式自定义 */
+.supervision-detail .progress-slider {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.supervision-detail .progress-slider input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #f0f0f0;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.supervision-detail .progress-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1890ff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.supervision-detail .progress-slider input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1890ff;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .supervision-detail {
+    padding: 16px;
+  }
+  
+  .detail-header .ant-card-body {
+    padding: 12px 16px;
+  }
+  
+  .detail-tabs .ant-tabs-content-holder {
+    padding: 16px;
+  }
+  
+  .supervision-detail .ant-descriptions {
+    font-size: 14px;
+  }
+  
+  .supervision-detail .ant-descriptions-item-label,
+  .supervision-detail .ant-descriptions-item-content {
+    padding: 8px 12px;
+  }
+}

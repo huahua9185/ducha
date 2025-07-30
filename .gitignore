@@ -1,0 +1,113 @@
+# 依赖文件
+node_modules/
+frontend/node_modules/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/*/__pycache__/
+backend/app/*/*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.Python
+
+# 构建输出
+frontend/build/
+backend/dist/
+*.egg-info/
+
+# 环境配置
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+
+# IDE 和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志文件
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+database.db
+
+# SSL证书
+ssl/
+*.pem
+*.key
+*.crt
+
+# Docker
+.dockerignore
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 临时文件
+tmp/
+temp/
+.tmp/
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 缓存
+.cache/
+.parcel-cache/
+
+# 依赖锁定文件 (可选择性忽略)
+# package-lock.json
+# yarn.lock
+
+# Alembic版本
+# backend/alembic/versions/*.py
+
+# 敏感配置文件
+config/secrets.json
+secrets/
+
+# 运行时生成的文件
+*.pid
+*.seed
+*.pid.lock
+
+# 编译后的Python文件
+*.so
+
+# 分发/打包
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST

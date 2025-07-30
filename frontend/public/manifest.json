@@ -1,0 +1,15 @@
+{
+  "short_name": "督查系统",
+  "name": "政府效能督查系统",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1890ff",
+  "background_color": "#ffffff"
+}

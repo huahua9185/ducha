@@ -1,0 +1,228 @@
+.monitoring-dashboard {
+  padding: 24px;
+}
+
+.monitoring-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.monitoring-header h3 {
+  margin: 0;
+  color: #262626;
+}
+
+/* 风险指标样式 */
+.risk-indicator {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.risk-indicator:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.risk-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #262626;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.risk-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.risk-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+/* 预警表格行样式 */
+.alert-row-critical {
+  background-color: #fff1f0;
+  border-left: 4px solid #ff4d4f;
+}
+
+.alert-row-warning {
+  background-color: #fffbe6;
+  border-left: 4px solid #faad14;
+}
+
+.monitoring-dashboard .ant-table-tbody > tr:hover.alert-row-critical > td {
+  background-color: #ffeaea !important;
+}
+
+.monitoring-dashboard .ant-table-tbody > tr:hover.alert-row-warning > td {
+  background-color: #fff7d1 !important;
+}
+
+/* 统计卡片样式 */
+.monitoring-dashboard .ant-statistic {
+  text-align: center;
+}
+
+.monitoring-dashboard .ant-statistic-title {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.monitoring-dashboard .ant-statistic-content {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.monitoring-dashboard .ant-statistic-content-prefix {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* 卡片样式 */
+.monitoring-dashboard .ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.monitoring-dashboard .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.monitoring-dashboard .ant-card-head-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+}
+
+/* 标签样式 */
+.monitoring-dashboard .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 6px;
+  font-weight: 500;
+}
+
+/* 按钮样式 */
+.monitoring-dashboard .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.monitoring-dashboard .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.monitoring-dashboard .ant-btn-danger {
+  background: linear-gradient(135deg, #ff4d4f 0%, #cf1322 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(255, 77, 79, 0.3);
+}
+
+/* 警告框样式 */
+.monitoring-dashboard .ant-alert {
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.monitoring-dashboard .ant-alert-error {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffe7e6 100%);
+}
+
+/* 表格样式 */
+.monitoring-dashboard .ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.monitoring-dashboard .ant-table-thead > tr > th {
+  background: #fafafa;
+  border-bottom: 2px solid #f0f0f0;
+  font-weight: 600;
+  color: #262626;
+}
+
+.monitoring-dashboard .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.monitoring-dashboard .ant-table-tbody > tr:hover > td {
+  background-color: #f8f9fa;
+}
+
+/* 徽章样式 */
+.monitoring-dashboard .ant-badge-status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.monitoring-dashboard .ant-badge-status-text {
+  font-size: 12px;
+  color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .monitoring-dashboard {
+    padding: 16px;
+  }
+  
+  .monitoring-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .risk-indicator {
+    padding: 16px;
+  }
+  
+  .risk-value {
+    font-size: 24px;
+  }
+  
+  .risk-icon {
+    font-size: 16px;
+  }
+  
+  .monitoring-dashboard .ant-card-head-extra {
+    margin-top: 8px;
+  }
+}
+
+/* 加载状态 */
+.monitoring-dashboard .ant-spin-container {
+  min-height: 200px;
+}
+
+/* 空状态 */
+.monitoring-dashboard .ant-empty {
+  padding: 40px 0;
+}
+
+/* 数据更新时间样式 */
+.monitoring-dashboard .update-time {
+  text-align: center;
+  margin-top: 16px;
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}

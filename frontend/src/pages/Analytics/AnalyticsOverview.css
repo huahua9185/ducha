@@ -1,0 +1,287 @@
+.analytics-overview {
+  padding: 24px;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.analytics-header h3 {
+  margin: 0;
+  color: #262626;
+}
+
+/* 统计卡片样式 */
+.analytics-overview .ant-statistic {
+  text-align: center;
+}
+
+.analytics-overview .ant-statistic-title {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.analytics-overview .ant-statistic-content {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.analytics-overview .ant-statistic-content-prefix {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* 卡片样式 */
+.analytics-overview .ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.analytics-overview .ant-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.analytics-overview .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.analytics-overview .ant-card-head-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.analytics-overview .ant-card-body {
+  padding: 20px;
+}
+
+.analytics-overview .ant-card-small .ant-card-body {
+  padding: 16px;
+}
+
+/* 进度条样式 */
+.analytics-overview .ant-progress {
+  margin: 0;
+}
+
+.analytics-overview .ant-progress-line {
+  margin: 4px 0;
+}
+
+.analytics-overview .ant-progress-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.analytics-overview .ant-progress-circle {
+  margin: 0 auto;
+}
+
+/* 表格样式 */
+.analytics-overview .ant-table {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.analytics-overview .ant-table-thead > tr > th {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  font-weight: 600;
+  color: #495057;
+  font-size: 13px;
+}
+
+.analytics-overview .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+}
+
+.analytics-overview .ant-table-tbody > tr:hover > td {
+  background-color: #f8f9fa;
+}
+
+.analytics-overview .ant-table-small {
+  font-size: 12px;
+}
+
+.analytics-overview .ant-table-small .ant-table-thead > tr > th,
+.analytics-overview .ant-table-small .ant-table-tbody > tr > td {
+  padding: 8px 12px;
+}
+
+/* 标签样式 */
+.analytics-overview .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 8px;
+  font-weight: 500;
+  border: none;
+}
+
+/* 按钮样式 */
+.analytics-overview .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.analytics-overview .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.analytics-overview .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* 日期选择器样式 */
+.analytics-overview .ant-picker {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+}
+
+.analytics-overview .ant-picker:focus,
+.analytics-overview .ant-picker-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 效率指标特殊样式 */
+.efficiency-metric {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.efficiency-value {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.efficiency-label {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 趋势图表区域 */
+.trend-chart-placeholder {
+  padding: 40px 0;
+  text-align: center;
+  background: #fafafa;
+  border-radius: 6px;
+  border: 2px dashed #d9d9d9;
+}
+
+.trend-data-preview {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.trend-data-item {
+  display: inline-block;
+  text-align: center;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  min-width: 80px;
+}
+
+.trend-data-item .month {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.trend-data-item .created {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff;
+  margin-bottom: 2px;
+}
+
+.trend-data-item .completed {
+  font-size: 12px;
+  color: #52c41a;
+}
+
+/* 排序指示器 */
+.analytics-overview .ant-table-column-sorter {
+  color: #bfbfbf;
+}
+
+.analytics-overview .ant-table-column-sorter-up.active,
+.analytics-overview .ant-table-column-sorter-down.active {
+  color: #1890ff;
+}
+
+/* 加载状态 */
+.analytics-overview .ant-spin-container {
+  min-height: 400px;
+}
+
+.analytics-overview .ant-spin-blur {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .analytics-overview {
+    padding: 16px;
+  }
+  
+  .analytics-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .analytics-overview .ant-statistic-content {
+    font-size: 24px;
+  }
+  
+  .efficiency-value {
+    font-size: 32px;
+  }
+  
+  .trend-data-preview {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  
+  .trend-data-item {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .analytics-overview .ant-card-head-extra {
+    margin-top: 8px;
+  }
+  
+  .analytics-overview .ant-table-small .ant-table-thead > tr > th,
+  .analytics-overview .ant-table-small .ant-table-tbody > tr > td {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+}

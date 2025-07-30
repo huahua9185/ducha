@@ -1,0 +1,165 @@
+.system-settings {
+  padding: 24px;
+}
+
+.settings-header {
+  margin-bottom: 24px;
+}
+
+.settings-header h3 {
+  margin: 0 0 8px 0;
+  color: #262626;
+}
+
+/* 设置菜单样式 */
+.settings-menu {
+  padding: 0;
+}
+
+.menu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
+.menu-item:hover {
+  background-color: #f5f5f5;
+  color: #262626;
+}
+
+.menu-item.active {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.menu-item .anticon {
+  font-size: 14px;
+}
+
+/* 设置内容样式 */
+.settings-content {
+  min-height: 400px;
+}
+
+.settings-content h4 {
+  margin: 0 0 16px 0;
+  color: #262626;
+  font-weight: 600;
+}
+
+/* 表单样式 */
+.system-settings .ant-form-item-label > label {
+  font-weight: 500;
+  color: #262626;
+}
+
+.system-settings .ant-input,
+.system-settings .ant-input-number,
+.system-settings .ant-select {
+  border-radius: 6px;
+}
+
+.system-settings .ant-input:focus,
+.system-settings .ant-input-number:focus,
+.system-settings .ant-select:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 开关样式 */
+.system-settings .ant-switch {
+  background-color: #f0f0f0;
+}
+
+.system-settings .ant-switch-checked {
+  background-color: #1890ff;
+}
+
+/* 按钮样式 */
+.system-settings .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.system-settings .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.system-settings .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+}
+
+/* 警告框样式 */
+.system-settings .ant-alert {
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* 卡片样式 */
+.system-settings .ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.system-settings .ant-card-body {
+  padding: 20px;
+}
+
+/* 分割线样式 */
+.system-settings .ant-divider {
+  margin: 24px 0;
+  border-color: #f0f0f0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .system-settings {
+    padding: 16px;
+  }
+  
+  .system-settings .ant-row {
+    flex-direction: column;
+  }
+  
+  .system-settings .ant-col {
+    margin-bottom: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .settings-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .menu-item {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+/* 表单验证样式 */
+.system-settings .ant-form-item-has-error .ant-input,
+.system-settings .ant-form-item-has-error .ant-input-number,
+.system-settings .ant-form-item-has-error .ant-select-selector {
+  border-color: #ff4d4f;
+}
+
+.system-settings .ant-form-item-explain-error {
+  font-size: 12px;
+  color: #ff4d4f;
+}

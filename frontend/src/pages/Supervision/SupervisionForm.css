@@ -1,0 +1,117 @@
+.supervision-form {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.supervision-form .ant-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
+.supervision-form .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.supervision-form .ant-card-head-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.supervision-form .ant-form-item-label > label {
+  font-weight: 500;
+  color: #262626;
+}
+
+.supervision-form .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.supervision-form .ant-input,
+.supervision-form .ant-select,
+.supervision-form .ant-picker {
+  border-radius: 6px;
+}
+
+.supervision-form .ant-input:focus,
+.supervision-form .ant-select:focus,
+.supervision-form .ant-picker:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.supervision-form .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.supervision-form .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.supervision-form .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+}
+
+.supervision-form .ant-switch {
+  background-color: #f0f0f0;
+}
+
+.supervision-form .ant-switch-checked {
+  background-color: #1890ff;
+}
+
+.supervision-form .ant-upload {
+  width: 100%;
+}
+
+.supervision-form .ant-upload-list {
+  margin-top: 8px;
+}
+
+/* 表单验证样式 */
+.supervision-form .ant-form-item-has-error .ant-input,
+.supervision-form .ant-form-item-has-error .ant-select-selector,
+.supervision-form .ant-form-item-has-error .ant-picker {
+  border-color: #ff4d4f;
+}
+
+.supervision-form .ant-form-item-explain-error {
+  font-size: 12px;
+  color: #ff4d4f;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .supervision-form {
+    padding: 16px;
+  }
+  
+  .supervision-form .ant-col {
+    margin-bottom: 0;
+  }
+  
+  .supervision-form .ant-card-head-extra {
+    margin: 8px 0;
+  }
+}
+
+/* 标签样式 */
+.supervision-form .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 加载状态 */
+.supervision-form .ant-spin-container {
+  min-height: 200px;
+}
+
+/* 卡片标题图标 */
+.supervision-form .ant-card-head-title .anticon {
+  margin-right: 8px;
+  color: #1890ff;
+}
