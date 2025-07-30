@@ -47,7 +47,7 @@
 
 1. **克隆项目**
 ```bash
-git clone https://github.com/yourusername/ducha.git
+git clone https://github.com/huahua9185/ducha.git
 cd ducha
 ```
 
@@ -217,8 +217,101 @@ SECRET_KEY=your-secret-key
 
 ## 开发指南
 
-详细开发指南请参考 `docs/development.md`
+## 📁 项目结构
 
-## 许可证
+```
+ducha/
+├── backend/                 # FastAPI 后端
+│   ├── app/
+│   │   ├── api/            # API 路由
+│   │   ├── core/           # 核心配置
+│   │   ├── db/             # 数据库配置
+│   │   ├── models/         # SQLAlchemy 模型
+│   │   ├── schemas/        # Pydantic 模式
+│   │   ├── services/       # 业务逻辑
+│   │   └── utils/          # 工具函数
+│   ├── alembic/            # 数据库迁移
+│   └── requirements.txt    # Python 依赖
+├── frontend/               # React 前端
+│   ├── public/             # 静态资源
+│   ├── src/
+│   │   ├── components/     # 通用组件
+│   │   ├── pages/          # 页面组件
+│   │   ├── services/       # API 服务
+│   │   ├── store/          # 状态管理
+│   │   ├── types/          # TypeScript 类型
+│   │   └── utils/          # 工具函数
+│   └── package.json        # Node.js 依赖
+├── scripts/                # 部署和工具脚本
+├── docker-compose.yml      # Docker 编排文件
+└── README.md              # 项目文档
+```
 
-MIT License
+## 🚀 功能模块
+
+### 1. 督办事项管理
+- 创建和编辑督办事项
+- 设置责任部门和责任人
+- 跟踪完成进度和质量评估
+- 支持多种督办类型（常规、重点、专项、应急）
+
+### 2. 工作流管理
+- 可视化工作流设计器
+- 灵活的审批节点配置
+- 并行和串行任务支持
+- 任务自动分配和提醒
+
+### 3. 监控预警
+- 实时进度监控
+- 自动逾期预警
+- 工作负载分析
+- 质量问题识别
+
+### 4. 统计分析
+- 完成率统计
+- 部门效能对比
+- 趋势分析图表
+- 导出数据报告
+
+### 5. 用户权限
+- 基于角色的访问控制
+- 部门级别权限管理
+- 操作日志记录
+- 安全审计功能
+
+## 🤝 贡献指南
+
+1. Fork 本项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
+
+## 📝 更新日志
+
+### v1.0.0 (2024-12-01)
+- 初始版本发布
+- 基础督办事项管理功能
+- 用户认证和权限系统
+- 基础工作流引擎
+- 监控预警功能
+- 统计分析模块
+
+## 📄 许可证
+
+本项目基于 MIT 许可证开源
+
+## 🆘 支持
+
+如果您遇到问题或有建议，请通过以下方式联系：
+
+- 提交 [Issue](https://github.com/huahua9185/ducha/issues)
+- 查看项目文档获取更多信息
+
+## 🙏 致谢
+
+感谢所有为这个项目做出贡献的开发者和使用者！
+
+---
+
+⭐ 如果这个项目对您有帮助，请给它一个星标！
